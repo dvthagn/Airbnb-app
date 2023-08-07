@@ -39,11 +39,11 @@ export const authOptions: AuthOptions = {
           throw new Error("Invalid credentials");
         }
 
-        const correctPassword = await bcrypt.compare(
+        const isCorrectPassword = await bcrypt.compare(
           credentials.password,
           user.hashedPassword
         );
-        if (!correctPassword) {
+        if (!isCorrectPassword) {
           throw new Error("Invalid credentials");
         }
 
@@ -54,11 +54,13 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/",
   },
-  debug: process.env.NOOE_ENV === "development",
+  debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+
+export {handler as GET, handler as POST}
