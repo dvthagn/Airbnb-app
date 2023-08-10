@@ -31,11 +31,11 @@ const Input: React.FC<InputProps> = ({
         <BiDollar
           size={24}
           className="
-                    text-neutral-700
-                    absolute
-                    top-5
-                    left-2
-                "
+              text-neutral-700
+              absolute
+              top-5
+              left-2
+            "
         />
       )}
 
